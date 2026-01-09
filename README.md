@@ -229,6 +229,136 @@ MatchHistory
 
 ---
 
+## 🧩 Basic Git & GitHub Guide (Setup & Branching)
+
+A short, practical guide to get contributors started with Git and GitHub for this repo.
+
+### Prerequisites
+- Git installed (https://git-scm.com/)
+- A GitHub account
+- Optional: GitHub CLI (gh) for convenience
+
+### 1) Configure Git (once per machine)
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+```
+
+### 2) SSH key setup (recommended)
+
+Generate a key (if you don't have one):
+
+```bash
+ssh-keygen -t ed25519 -C "you@example.com"
+# or for older systems:
+ssh-keygen -t rsa -b 4096 -C "you@example.com"
+```
+
+Add the public key (~/.ssh/id_ed25519.pub) to GitHub: https://github.com/settings/keys
+Test the connection:
+
+```bash
+ssh -T git@github.com
+```
+
+Or use HTTPS if you prefer (you will be prompted for credentials unless you use a credential helper).
+
+### 3) Clone the repo
+
+```bash
+git clone git@github.com:Vinayak55jain/LostandFound_fy.git
+cd LostandFound_fy
+```
+
+### 4) Create a new branch (feature/fix/workflow)
+
+Branch naming suggestions:
+- feat/<short-description>
+- fix/<short-description>
+- docs/<short-description>
+
+```bash
+git checkout -b feat/add-match-logging
+```
+
+### 5) Make changes & commit
+
+Make your code changes, then:
+
+```bash
+git add .
+git commit -m "feat: add match logging to matching engine"
+```
+
+Write clear, imperative commit messages. Use conventional commits if possible.
+
+### 6) Push your branch
+
+```bash
+git push -u origin feat/add-match-logging
+```
+
+### 7) Create a Pull Request (PR)
+
+- Open the repository on GitHub and you should see a prompt to create a PR for your pushed branch.
+- Or use GitHub CLI:
+
+```bash
+gh pr create --fill --title "feat: add match logging" --body "Adds logging for match scoring"
+```
+
+Fill in description, link related issues, and set reviewers or assignees.
+
+### 8) Keep your branch up to date
+
+Before merging, sync with main:
+
+```bash
+git checkout main
+git pull origin main
+git checkout feat/add-match-logging
+git merge main
+# or rebase if preferred:
+# git rebase main
+```
+
+Resolve any conflicts, run tests, then push the resolved branch.
+
+### 9) Merge & delete branch
+
+- Merge via GitHub UI or with command line after approvals.
+- Delete the remote branch once merged:
+
+```bash
+git push origin --delete feat/add-match-logging
+```
+
+### Useful Commands (quick reference)
+
+```bash
+# show status
+git status
+
+# view commits
+git log --oneline --graph --decorate
+
+# list branches
+git branch -a
+
+# switch branches
+git checkout main
+git checkout -b <branch>
+
+# fetch latest without merging
+git fetch origin
+
+# reset local changes (careful)
+git checkout -- <file>
+```
+
+---
+
 ## 🤝 Contributing
 
 Contributions are welcome! Suggested process:
